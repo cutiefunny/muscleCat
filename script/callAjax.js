@@ -16,12 +16,18 @@ function callAjax(op) {
             }else if( result['result'] == "face1" ) {
                 img_cat.setAttribute("src","/images/cat/cat_face1.png");
                 callAjax("idle");
-            }
-            else if( result['result'] == "face2" ) {
+            }else if( result['result'] == "face2" ) {
                 img_cat.setAttribute("src","/images/cat/cat_face2.png");
                 callAjax("idle");
+            }else if( result['result'] == "feed" ) {
+                span_sub.innerText = "맛있다냥!!";
+                img_cat.setAttribute("src","/images/cat/cat_eat.gif");
+                callAjax("idle");
             }
-            else if( result['result'] == "idle" ) img_cat.setAttribute("src","/images/cat/cat_idle.gif");
+            else if( result['result'] == "idle" ) {
+                span_sub.innerText = "";
+                img_cat.setAttribute("src","/images/cat/cat_idle.gif");
+            }
             
         } //function끝
     }).done(function(response) {

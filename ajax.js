@@ -7,6 +7,8 @@ exports.controller = function(req,res,next) {
         res.send({result:req.body.op,msg:"face1"});
     }else if(req.body.op=="face2"){
         res.send({result:req.body.op,msg:"face2"});
+    }else if(req.body.op=="feed"){
+        res.send({result:req.body.op,msg:"feed"});
     }else if(req.body.op=="idle"){
         setTimeout(() => {
             res.send({result:req.body.op,msg:"idle"});

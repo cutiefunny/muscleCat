@@ -11,11 +11,15 @@ html
             P
             H1= title
             P 
+            span#span_sub
+            br
             img#img_cat(src="/images/cat/cat_idle.gif" width="300")
             P
-            button#btn_test.ui.button(onclick="face1()") 화남
+            button#btn_feed.ui.button(onclick="feed()") 밥 주기
+            P
+            button#btn_face1.ui.button(onclick="face1()") 화남
             |
-            button#btn_test.ui.button(onclick="face2()") -ㅅ-
+            button#btn_face2.ui.button(onclick="face2()") -ㅅ-
 
     script(src="//code.jquery.com/jquery-1.11.0.min.js")
     script(src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.js")
