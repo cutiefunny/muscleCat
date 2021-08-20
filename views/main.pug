@@ -1,0 +1,23 @@
+html 
+    head 
+        title=title 
+        //-meta(name="viewport" content="width=416, user-scalable=yes")
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.css")
+        link(rel='stylesheet', href='/views/main.css')
+    body
+        center
+            P
+            H1= title
+            P 
+            img#img_cat(src="/images/cat/cat_idle.gif" width="300")
+            P
+            button#btn_test.ui.button(onclick="face1()") 화남
+            |
+            button#btn_test.ui.button(onclick="face2()") -ㅅ-
+
+    script(src="//code.jquery.com/jquery-1.11.0.min.js")
+    script(src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.js")
+    script(src="/script/main.js")
+    script(src="/script/callAjax.js")
