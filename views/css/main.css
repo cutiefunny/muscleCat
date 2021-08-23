@@ -1,6 +1,7 @@
-table{
-    width : 150px;
+.topAlign{
+    vertical-align: top;
 }
+
 th{
     background-color: lightgrey;
     padding: 5px;
