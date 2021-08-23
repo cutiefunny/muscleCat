@@ -5,7 +5,7 @@ html
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.css")
-        link(rel='stylesheet', href='/views/main.css')
+        link(rel='stylesheet', href='/views/css/main.css')
     body
         center
             P
@@ -15,11 +15,42 @@ html
             br
             img#img_cat(src="/images/cat/cat_idle.gif" width="300")
             P
+            button#btn_stat.ui.positive.button(onclick="stat()") 상태
+            |
             button#btn_feed.ui.button(onclick="feed()") 밥 주기
-            P
+            |
             button#btn_face1.ui.button(onclick="face1()") 화남
             |
             button#btn_face2.ui.button(onclick="face2()") -ㅅ-
+            P 
+            #div_stat.box
+                table#tb_stat
+                    tr 
+                        td.center 체중
+                        td.right= stat.bw 
+                        td kg
+                    tr
+                        td.center 근육량
+                        td.right= stat.muscle
+                        td kg
+                    tr
+                        td.center 체지방량
+                        td.right= stat.fat
+                        td kg
+                P
+                table#tb_strength
+                    tr 
+                        td.center 스쿼트
+                        td.right= stat.squat 
+                        td kg
+                    tr
+                        td.center 벤치프레스
+                        td.right= stat.bench
+                        td kg
+                    tr
+                        td.center 데드리프트
+                        td.right= stat.dead
+                        td kg 
 
     script(src="//code.jquery.com/jquery-1.11.0.min.js")
     script(src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.js")

@@ -21,16 +21,11 @@ app.use('/images',express.static(__dirname + "/images"));
 app.use(bodyparser.urlencoded({extended:false}))
 app.use(bodyparser.json());
 
-const { MongoClient } = require("mongodb");
 const { response, request } = require('express');
 const { createConnection } = require('net');
 //#endregion
 
-//#region DB연결 및 라우팅
-//몽고DB 연결
-const uri =
-  "mongodb+srv://cutiefunny:ghks1015@macrodb.srkli.mongodb.net/macroDB?retryWrites=true&w=majority";
-const client = new MongoClient(uri);
+//#region 리스닝 및 라우팅
 
 //리스닝
 app.listen(port, ()=>{
