@@ -1,10 +1,18 @@
 table{
     width : 150px;
 }
+th{
+    background-color: lightgrey;
+    padding: 5px;
+}
 
 .right{
     font-weight: bold;
     text-align: right;
+}
+.left{
+    font-weight: bold;
+    text-align: left;
 }
 
 .center{

@@ -26,31 +26,38 @@ html
             #div_stat.box
                 table#tb_stat
                     tr 
+                        th(colspan=3) Statement
+                    tr 
                         td.center 체중
                         td.right= stat.bw 
-                        td kg
+                        td.left kg
                     tr
                         td.center 근육량
                         td.right= stat.muscle
-                        td kg
+                        td.left kg
                     tr
                         td.center 체지방량
                         td.right= stat.fat
-                        td kg
-                P
+                        td.left kg
+                    tr
+                        td.center 체지방률
+                        td.right= stat.fatper
+                        td.left %
                 table#tb_strength
+                    tr 
+                        th(colspan=3) 1RM
                     tr 
                         td.center 스쿼트
                         td.right= stat.squat 
-                        td kg
+                        td.left kg
                     tr
                         td.center 벤치프레스
                         td.right= stat.bench
-                        td kg
+                        td.left kg
                     tr
                         td.center 데드리프트
                         td.right= stat.dead
-                        td kg 
+                        td.left kg 
 
     script(src="//code.jquery.com/jquery-1.11.0.min.js")
     script(src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.js")
