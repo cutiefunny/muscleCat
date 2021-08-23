@@ -5,11 +5,17 @@ var img_cat = document.getElementById("img_cat");
 var span_sub = document.getElementById("span_sub");
 var div_stat = document.getElementById("div_stat");
 
+//페이지 시작 시 수행되는 함수
+window.onload = function(){
+    progress();
+};
+
 function test(){ callAjax("test"); }
 function face1(){ callAjax("face1"); }
 function face2(){ callAjax("face2"); }
 function feed(){ callAjax("feed"); }
 function stat(){ toggleBtn(btn_stat,div_stat) }
+function progress(){ $('#bar_fatigue').progress('decrement'); }
 
 //토글 버튼
 function toggleBtn(btn,div){

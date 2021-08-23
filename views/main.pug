@@ -11,6 +11,9 @@ html
             P
             H1= title
             P 
+            #bar_fatigue.ui.teal.progress(style="width:300px;" data-value="20" data-total="20" onclick="progress()")
+                .bar
+                    .progress= stat.fatigue
             span#span_sub
             br
             img#img_cat(src="/images/cat/cat_idle.gif" width="300")
