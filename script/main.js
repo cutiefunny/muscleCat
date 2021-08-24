@@ -13,9 +13,10 @@ var td_fatigue = document.getElementById("td_fatigue");
 
 //페이지 시작 시 수행되는 함수
 window.onload = function(){
-    setFatigue( parseInt(div_fatigue.innerText));
-    setEnergy( parseInt(div_energy.innerText));
-    setCondition( parseInt(div_condition.innerText));
+    getCondition();
+    // setFatigue( parseInt(div_fatigue.innerText));
+    // setEnergy( parseInt(div_energy.innerText));
+    // setCondition( parseInt(div_condition.innerText));
     setInterval("getCondition()",10000);
 };
 
