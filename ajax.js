@@ -11,8 +11,8 @@ exports.controller = function(req,res,next) {
         res.send({result:req.body.op,msg:"face2"});
     }else if(req.body.op=="feed"){
         CRUD.searchData("init","stat").then((stat)=>{
-            CRUD.updateData("feed","stat",parseInt(stat.energy)+10);
-            res.send({result:req.body.op,energy:parseInt(stat.energy)+10});
+            CRUD.updateData("feed","stat",parseInt(stat.energy)+30);
+            res.send({result:req.body.op,energy:parseInt(stat.energy)+30});
         });
     }else if(req.body.op=="idle"){
         setTimeout(() => {

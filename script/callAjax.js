@@ -29,19 +29,14 @@ function callAjax(op) {
                 callAjax("idle");
             }
             else if( result['result'] == "idle" ) {
-                span_sub.innerText = "";
-                img_cat.setAttribute("src","/images/cat/cat_idle.gif");
+                callAjax("getCondition");
+                // span_sub.innerText = "";
+                // img_cat.setAttribute("src","/images/cat/cat_idle.gif");
             }else if( result['result'] == "getCondition" ) {
                 setFatigue(result['stat'].fatigue);
                 setEnergy(result['stat'].energy);
                 setCondition(result['stat'].condition);
-                if(result['stat'].energy<50) {
-                    img_cat.setAttribute("src","/images/cat/cat_face1.png");
-                    span_sub.innerText = "밥줘!!";
-                }else{
-                    span_sub.innerText = "";
-                    img_cat.setAttribute("src","/images/cat/cat_idle.gif");
-                }
+                setImage(result['stat'].energy);
             }
             
         } //function끝
@@ -50,4 +45,14 @@ function callAjax(op) {
     }).fail(function(response, txt, e) {
         //alert("fail");
     }); // ------      ajax 끝-----------------
+}
+
+function setImage(param){
+    if(param < 50){
+        img_cat.setAttribute("src","/images/cat/cat_face1.png");
+        span_sub.innerText = "밥줘!!";
+    }else{
+        span_sub.innerText = "";
+        img_cat.setAttribute("src","/images/cat/cat_idle.gif");
+    }
 }
