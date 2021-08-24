@@ -13,7 +13,6 @@ exports.searchData = async function (op,col,param){
     var collection = db.collection(col);
 
     if(op=="init"){
-        console.log("read initialize date");
         res = await collection.find().sort({date : -1}).toArray();
     }
     return res[0];
@@ -28,6 +27,14 @@ exports.updateData = async function (op,col,param){
       console.log("fatigue decrease 1");
       var filter = {date:moment().format("YYYYMMDD")};
       var doc={$set:{fatigue : param}};
-      await collection.updateOne(filter,doc);
+  }else if(op=="energyDown"){
+    console.log("energy decrease 1");
+    var filter = {date:moment().format("YYYYMMDD")};     
+    var doc={$set:{energy : param}};
+  }else if(op=="feed"){
+      console.log("feed");
+      var filter = {date:moment().format("YYYYMMDD")};     
+      var doc={$set:{energy : param}};
   }
+  await collection.updateOne(filter,doc);
 }

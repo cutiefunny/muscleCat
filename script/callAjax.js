@@ -22,6 +22,7 @@ function callAjax(op) {
                 img_cat.setAttribute("src","/images/cat/cat_face2.png");
                 callAjax("idle");
             }else if( result['result'] == "feed" ) {
+                setEnergy(result['energy']);
                 span_sub.className = "";
                 span_sub.innerText = "맛있다냥!!";
                 img_cat.setAttribute("src","/images/cat/cat_eat.gif");
@@ -34,6 +35,13 @@ function callAjax(op) {
                 setFatigue(result['stat'].fatigue);
                 setEnergy(result['stat'].energy);
                 setCondition(result['stat'].condition);
+                if(result['stat'].energy<50) {
+                    img_cat.setAttribute("src","/images/cat/cat_face1.png");
+                    span_sub.innerText = "밥줘!!";
+                }else{
+                    span_sub.innerText = "";
+                    img_cat.setAttribute("src","/images/cat/cat_idle.gif");
+                }
             }
             
         } //function끝
