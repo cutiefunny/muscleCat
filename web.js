@@ -27,6 +27,16 @@ const { response, request } = require('express');
 const { createConnection } = require('net');
 //#endregion
 
+//상태 변경 속도 정의
+const fatigueDown = 0;
+const fatigueUp = 0;
+const energyDown = 0;
+const conditionUp = 0;
+const conditionDown = 0;
+//상태
+const sleep=false; //수면중
+var timeCnt = 0;
+
 //#region 리스닝 및 라우팅
 
 //리스닝
@@ -37,10 +47,19 @@ console.log("server started");
 
 //크론 배치 실행
 cron.schedule('1,10,20,30,40,50 * * * * *', () => {
-    CRUD.searchData("init","stat").then((stat)=>{
-        if(parseInt(stat.energy)>1) CRUD.updateData("energyDown","stat",parseInt(stat.energy)-1);
-        console.log("cron run");        
-    })
+    if(timeCnt>5) timeCnt=1;
+    else timeCnt++;
+    //포만감이 떨어지는 경우 : 현재 1분에 1 감소
+    if(timeCnt==6) {
+        CRUD.searchData("init","stat").then((stat)=>{
+            if(parseInt(stat.energy)>1) CRUD.updateData("energyDown","stat",parseInt(stat.energy)-1);
+            console.log(timeCnt);        
+        })
+    }
+    //컨디션이 떨어지는 경우 : 포만감 50% 이하에서 1분에 1 감소
+    //피로도가 올라가는 경우 : 깨어 있는 상태에서 10분에 1 상승
+    //수면 상태 : 피로도 1분에 1 감소/포만감 10분에 1 감소/컨디션 1분에 1 상승
+    
 });
 
 //라우터
