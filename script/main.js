@@ -14,9 +14,6 @@ var td_fatigue = document.getElementById("td_fatigue");
 //페이지 시작 시 수행되는 함수
 window.onload = function(){
     getCondition();
-    // setFatigue( parseInt(div_fatigue.innerText));
-    // setEnergy( parseInt(div_energy.innerText));
-    // setCondition( parseInt(div_condition.innerText));
     setInterval("getCondition()",10000);
 };
 
@@ -24,7 +21,14 @@ window.onload = function(){
 function test(){ callAjax("test"); }
 function face1(){ callAjax("face1"); }
 function face2(){ callAjax("face2"); }
-function feed(){ callAjax("feed"); }
+function feed(){ 
+    if( parseInt(div_energy.innerText) > 99 ) {
+        span_sub.innerText = "배 불러! 고만 줘!!";
+        img_cat.setAttribute("src","/images/cat/cat_face1.png");
+        callAjax("idle");
+    }else callAjax("feed"); 
+
+}
 function table(){ toggleHide(div_table,btn_table); }
 function box(){ toggleHide(div_stat,btn_box); }
 function setFatigue(per){ $('#bar_fatigue').progress({ percent : per }); }
