@@ -38,7 +38,7 @@ console.log("server started");
 //크론 배치 실행
 cron.schedule('1,10,20,30,40,50 * * * * *', () => {
     CRUD.searchData("init","stat").then((stat)=>{
-        CRUD.updateData("energyDown","stat",parseInt(stat.energy)-1);
+        if(parseInt(stat.energy)>1) CRUD.updateData("energyDown","stat",parseInt(stat.energy)-1);
         console.log("cron run");        
     })
 });
