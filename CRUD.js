@@ -6,10 +6,10 @@ const uri =
   "mongodb+srv://cutiefunny:ghks1015@macrodb.srkli.mongodb.net/macroDB?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
 client.connect();
+const db = client.db("muscleCat");
 
 //Read
 exports.searchData = async function (op,col,param){
-    var db = client.db("muscleCat");
     var collection = db.collection(col);
 
     if(op=="init"){
@@ -17,4 +17,17 @@ exports.searchData = async function (op,col,param){
         res = await collection.find().sort({date : -1}).toArray();
     }
     return res[0];
+}
+
+//Update
+exports.updateData = async function (op,col,param){
+  console.log(op+" , "+param);
+  var collection = db.collection(col);
+
+  if(op=="fatigueDown"){
+      console.log("fatigue decrease 1");
+      var filter = {date:moment().format("YYYYMMDD")};
+      var doc={$set:{fatigue : param}};
+      await collection.updateOne(filter,doc);
+  }
 }

@@ -27,6 +27,10 @@ function callAjax(op) {
             else if( result['result'] == "idle" ) {
                 span_sub.innerText = "";
                 img_cat.setAttribute("src","/images/cat/cat_idle.gif");
+            }else if( result['result'] == "getCondition" ) {
+                setFatigue(result['stat'].fatigue);
+                setEnergy(result['stat'].energy);
+                setCondition(result['stat'].condition);
             }
             
         } //function끝

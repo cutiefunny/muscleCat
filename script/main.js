@@ -4,10 +4,17 @@ var btn_stat = document.getElementById("btn_stat");
 var img_cat = document.getElementById("img_cat");
 var span_sub = document.getElementById("span_sub");
 var div_stat = document.getElementById("div_stat");
+var div_fatigue = document.getElementById("div_fatigue");
+var div_energy = document.getElementById("div_energy");
+var div_condition = document.getElementById("div_condition");
+var td_fatigue = document.getElementById("td_fatigue");
 
 //페이지 시작 시 수행되는 함수
 window.onload = function(){
-    progress();
+    setFatigue( parseInt(div_fatigue.innerText));
+    setEnergy( parseInt(div_energy.innerText));
+    setCondition( parseInt(div_condition.innerText));
+    setInterval("getCondition()",10000);
 };
 
 function test(){ callAjax("test"); }
@@ -15,7 +22,10 @@ function face1(){ callAjax("face1"); }
 function face2(){ callAjax("face2"); }
 function feed(){ callAjax("feed"); }
 function stat(){ toggleBtn(btn_stat,div_stat) }
-function progress(){ $('#bar_fatigue').progress('decrement'); }
+function setFatigue(per){ $('#bar_fatigue').progress({ percent : per }); }
+function setEnergy(per){ $('#bar_energy').progress({ percent : per }); }
+function setCondition(per){ $('#bar_condition').progress({ percent : per }); }
+function getCondition(){ callAjax("getCondition"); }
 
 //토글 버튼
 function toggleBtn(btn,div){

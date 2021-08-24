@@ -2,6 +2,21 @@
     vertical-align: top;
 }
 
+.fatigue{
+  color:gray;
+  font-weight: bold;
+}
+
+.energy{
+  color:#21ba45;
+  font-weight: bold;
+}
+
+.condition{
+  color:#00b5ad;
+  font-weight: bold;
+}
+
 th{
     background-color: lightgrey;
     padding: 5px;
@@ -44,23 +59,4 @@ th{
   .disappear {
     animation: fade-out 1s;
     animation-fill-mode: forwards;
-  }
-  
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes fade-out {
-    from {
-      opacity: 1;
-  
-    }
-    to {
-      opacity: 0;
-    }
   }

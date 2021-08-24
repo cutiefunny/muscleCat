@@ -11,9 +11,25 @@ html
             P
             H1= title
             P 
-            #bar_fatigue.ui.teal.progress(style="width:300px;" data-value="20" data-total="20" onclick="progress()")
-                .bar
-                    .progress= stat.fatigue
+            table
+                tr
+                    td#td_fatigue.topAlign.fatigue 피로도
+                    td
+                        #bar_fatigue.ui.progress(style="width:230px;margin:0px" data-value=stat.fatigue data-total="100" onclick="progress()")
+                            .bar
+                                #div_fatigue.progress= stat.fatigue
+                tr
+                    td.topAlign.energy 포만감
+                    td
+                        #bar_energy.ui.indicating.progress(style="width:230px;margin:0px" data-value=stat.energy data-total="100" onclick="progress()")
+                            .bar
+                                #div_energy.progress= stat.energy
+                tr
+                    td.topAlign.condition 컨디션
+                    td
+                        #bar_condition.ui.teal.progress(style="width:230px;margin:0px" data-value=stat.condition data-total="100" onclick="progress()")
+                            .bar
+                                #div_condition.progress= stat.condition
             span#span_sub
             br
             img#img_cat(src="/images/cat/cat_idle.gif" width="300")

@@ -1,3 +1,5 @@
+const CRUD= require("./CRUD");
+
 exports.controller = function(req,res,next) {
     
     if(req.body.op=="test"){
@@ -13,5 +15,9 @@ exports.controller = function(req,res,next) {
         setTimeout(() => {
             res.send({result:req.body.op,msg:"idle"});
         }, 2000);
+    }else if(req.body.op=="getCondition"){
+        CRUD.searchData("init","stat").then((stat)=>{
+            res.send({result:"getCondition",stat:stat});
+        });
     }
 }

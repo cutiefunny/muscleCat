@@ -6,10 +6,11 @@ const http = require('https');
 const download = require('image-downloader');
 const path = require('path');
 const moment = require('moment');
-const cron = require('node-cron');
+var cron = require('node-cron');
 const bodyparser= require('body-parser');
 const router = require('./router');
 const ajax = require('./ajax');
+const CRUD= require("./CRUD");
 const app = express();
 
 app.set('view engine', 'pug');
@@ -33,6 +34,14 @@ app.listen(port, ()=>{
     console.log('8002번 포트에 대기중!');
 })
 console.log("server started");
+
+//크론 배치 실행
+// cron.schedule('1,10,20,30,40,50 * * * * *', () => {
+//     CRUD.searchData("init","stat").then((stat)=>{
+//         CRUD.updateData("fatigueDown","stat",parseInt(stat.fatigue)-1);
+//         console.log("cron run");        
+//     })
+// });
 
 //라우터
 app.get('/', router.main);
