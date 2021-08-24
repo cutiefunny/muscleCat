@@ -10,39 +10,43 @@ html
         center
             P
             H1= title
-            P 
-            table
-                tr
-                    td#td_fatigue.topAlign.fatigue 피로도
-                    td
-                        #bar_fatigue.ui.progress(style="width:230px;margin:0px" data-value=stat.fatigue data-total="100" onclick="progress()")
-                            .bar
-                                #div_fatigue.progress= stat.fatigue
-                tr
-                    td.topAlign.energy 포만감
-                    td
-                        #bar_energy.ui.indicating.progress(style="width:230px;margin:0px" data-value=stat.energy data-total="100" onclick="progress()")
-                            .bar
-                                #div_energy.progress= stat.energy
-                tr
-                    td.topAlign.condition 컨디션
-                    td
-                        #bar_condition.ui.teal.progress(style="width:230px;margin:0px" data-value=stat.condition data-total="100" onclick="progress()")
-                            .bar
-                                #div_condition.progress= stat.condition
+            #btn_table.hide(onclick="table()") 
+                span.bold 상태
+                i.big.caret.square.down.outline.icon
+            #div_table(onclick="table()")
+                table
+                    tr
+                        td#td_fatigue.topAlign.fatigue 피로도
+                        td
+                            #bar_fatigue.ui.progress(style="width:230px;margin:0px" data-value=stat.fatigue data-total="100" onclick="progress()")
+                                .bar
+                                    #div_fatigue.progress= stat.fatigue
+                    tr
+                        td.topAlign.energy 포만감
+                        td
+                            #bar_energy.ui.indicating.progress(style="width:230px;margin:0px" data-value=stat.energy data-total="100" onclick="progress()")
+                                .bar
+                                    #div_energy.progress= stat.energy
+                    tr
+                        td.topAlign.condition 컨디션
+                        td
+                            #bar_condition.ui.teal.progress(style="width:230px;margin:0px" data-value=stat.condition data-total="100" onclick="progress()")
+                                .bar
+                                    #div_condition.progress= stat.condition
             span#span_sub
             br
             img#img_cat(src="/images/cat/cat_idle.gif" width="300")
             P
-            button#btn_stat.ui.positive.button(onclick="stat()") 상태
-            |
             button#btn_feed.ui.button(onclick="feed()") 밥 주기
             |
             button#btn_face1.ui.button(onclick="face1()") 화남
             |
             button#btn_face2.ui.button(onclick="face2()") -ㅅ-
             P 
-            #div_stat.box
+            #btn_box.hide(onclick="box()") 
+                span.bold 능력치
+                i.big.caret.square.down.outline.icon
+            #div_stat.box(onclick="box()")
                 table
                     tr 
                         td.topAlign
