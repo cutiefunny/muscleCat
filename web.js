@@ -57,15 +57,24 @@ cron.schedule('1 * * * * *', () => {
                 if(parseInt(stat.energy)>1) CRUD.updateData("energy","condition",parseInt(stat.energy)-1,stat.name)
                 .then( console.log(stat.name + ".energy : " + stat.energy)  ) ;
                 //2분에 피로도 1 증가
-                if(timeCnt%2==0 && parseInt(stat.fatigue)<101 ) CRUD.updateData("fatigue","condition",parseInt(stat.fatigue)+1,stat.name)
+                if(timeCnt%2==0 && parseInt(stat.fatigue)<100 ) CRUD.updateData("fatigue","condition",parseInt(stat.fatigue)+1,stat.name)
                 .then( console.log(stat.name + ".fatigue : " + stat.fatigue)  ) ;
+                //배가 고프면 1분에 컨디션 1 감소. 최소 30
+                if(parseInt(stat.energy)<31 && parseInt(stat.condition)>30) CRUD.updateData("condition","condition",parseInt(stat.condition)-1,stat.name)
+                .then( console.log(stat.name + ".condition : " + stat.condition)  ) ;
+                //피곤하면 1분에 컨디션 1 감소. 최소 10
+                if(parseInt(stat.fatigue)>89 && parseInt(stat.condition)>10) CRUD.updateData("condition","condition",parseInt(stat.condition)-1,stat.name)
+                .then( console.log(stat.name + ".condition : " + stat.condition)  ) ;
             }else{ //잠든 상태이면
-                //1분에 피로도 2감소
-                if(parseInt(stat.fatigue)<100) CRUD.updateData("fatigue","condition",parseInt(stat.fatigue)-2,stat.name)
+                //1분에 피로도 1 감소
+                if(parseInt(stat.fatigue)>0) CRUD.updateData("fatigue","condition",parseInt(stat.fatigue)-1,stat.name)
                 .then( console.log(stat.name + ".fatigue : " + stat.fatigue)  ) ;
-                //2분에 포만감 1감소
-                if(timeCnt%2 && parseInt(stat.energy)>1) CRUD.updateData("energy","condition",parseInt(stat.energy)-1,stat.name)
+                //10분에 포만감 1 감소
+                if(timeCnt==9 && parseInt(stat.energy)>1) CRUD.updateData("energy","condition",parseInt(stat.energy)-1,stat.name)
                 .then( console.log(stat.name + ".energy : " + stat.energy)  ) ;
+                //(배가 부르면) 1분에 컨디션 1 증가
+                if(parseInt(stat.energy)>30 && parseInt(stat.condition)<100) CRUD.updateData("condition","condition",parseInt(stat.condition)+1,stat.name)
+                .then( console.log(stat.name + ".condition : " + stat.condition)  ) ;
             }
             
         });

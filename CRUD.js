@@ -30,6 +30,9 @@ exports.updateData = async function (op,col,param,name){
   }else if(op=="energy"){
     var filter = {name:name};     
     var doc={$set:{energy : param}};
+  }else if(op=="condition"){
+    var filter = {name:name};     
+    var doc={$set:{condition : param}};
   }else if(op=="feed"){
       console.log("feed");
       var filter = {name:name};     
