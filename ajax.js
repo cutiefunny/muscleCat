@@ -1,7 +1,7 @@
 const CRUD= require("./CRUD");
 
 //동작별 상태 변경 정의
-const feed=30; //밥 주기
+const feed=10; //밥 주기
 
 exports.controller = function(req,res,next) {
     
@@ -13,7 +13,7 @@ exports.controller = function(req,res,next) {
     }else if(req.body.op=="face2"){
         res.send({result:req.body.op,msg:"face2"});
     }else if(req.body.op=="feed"){
-        CRUD.searchData("getCondition","stat",feed,req.body.name).then((stat)=>{
+        CRUD.searchData("getCondition","stat",req.body.name).then((stat)=>{
             CRUD.updateData("feed","stat",parseInt(stat.energy)+feed,req.body.name);
             res.send({result:req.body.op,energy:parseInt(stat.energy)+feed});
         });
