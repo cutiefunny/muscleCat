@@ -28,8 +28,12 @@ function callAjax(op) {
                 span_sub.innerText = "맛있다냥!!";
                 img_cat.setAttribute("src","/images/cat/cat_eat.gif");
                 callAjax("idle");
-            }
-            else if( result['result'] == "idle" ) {
+            }else if( result['result'] == "sleep" ) {
+                result['sleep'] ? btn_sleep.innerText = "일어나기" : btn_sleep.innerText = "잠자기";
+                setImage(parseInt(div_energy.innerText),btn_sleep.innerText == "잠자기" ? false : true);
+                // span_sub.innerText = "";
+                // img_cat.setAttribute("src","/images/cat/cat_idle.gif");
+            }else if( result['result'] == "idle" ) {
                 callAjax("getCondition");
                 // span_sub.innerText = "";
                 // img_cat.setAttribute("src","/images/cat/cat_idle.gif");

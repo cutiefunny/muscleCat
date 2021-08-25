@@ -20,7 +20,7 @@ exports.controller = function(req,res,next) {
     }else if(req.body.op=="sleep"){
         CRUD.searchData("getCondition","condition",req.body.name).then((stat)=>{
             CRUD.updateData("sleep","condition", stat[0].sleep ? false : true ,req.body.name);
-            //res.send({result:req.body.op,energy:parseInt(stat[0].energy)+feed});
+            res.send({result:req.body.op,sleep: stat[0].sleep ? false : true });
         });
     }else if(req.body.op=="idle"){
         setTimeout(() => {

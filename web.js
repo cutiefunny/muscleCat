@@ -27,14 +27,7 @@ const { response, request } = require('express');
 const { createConnection } = require('net');
 //#endregion
 
-//상태 변경 속도 정의
-const fatigueDown = 0;
-const fatigueUp = 0;
-const energyDown = 0;
-const conditionUp = 0;
-const conditionDown = 0;
-//상태
-const sleep=false; //수면중
+//타임 카운트
 var timeCnt = 0;
 
 //#region 리스닝 및 라우팅
