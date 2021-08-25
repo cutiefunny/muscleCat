@@ -37,6 +37,7 @@ function callAjax(op) {
                 setFatigue(result['stat'].fatigue);
                 setEnergy(result['stat'].energy);
                 setCondition(result['stat'].condition);
+                result['stat'].sleep ? btn_sleep.innerText = "일어나기" : btn_sleep.innerText = "잠자기";
                 setImage(result['stat'].energy,btn_sleep.innerText == "잠자기" ? false : true);
             }
             
