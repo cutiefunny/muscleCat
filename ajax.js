@@ -13,7 +13,7 @@ exports.controller = function(req,res,next) {
     }else if(req.body.op=="face2"){
         res.send({result:req.body.op,msg:"face2"});
     }else if(req.body.op=="feed"){
-        CRUD.searchData("init","stat").then((stat)=>{
+        CRUD.searchData("getCondition","stat",feed,req.body.name).then((stat)=>{
             CRUD.updateData("feed","stat",parseInt(stat.energy)+feed,req.body.name);
             res.send({result:req.body.op,energy:parseInt(stat.energy)+feed});
         });
