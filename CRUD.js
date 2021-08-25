@@ -24,17 +24,20 @@ exports.updateData = async function (op,col,param,name){
   //console.log(op+" , "+param);
   var collection = db.collection(col);
 
-  if(op=="fatigueDown"){
-      console.log("fatigue decrease 1");
+  if(op=="fatigue"){
       var filter = {name:name};
       var doc={$set:{fatigue : param}};
-  }else if(op=="energyDown"){
+  }else if(op=="energy"){
     var filter = {name:name};     
     var doc={$set:{energy : param}};
   }else if(op=="feed"){
       console.log("feed");
       var filter = {name:name};     
       var doc={$set:{energy : param}};
-  }
+  }else if(op=="sleep"){
+    console.log("sleep status changed. sleep = "+ param);
+    var filter = {name:name};     
+    var doc={$set:{sleep : param}};
+}
   await collection.updateOne(filter,doc);
 }

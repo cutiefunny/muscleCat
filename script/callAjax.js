@@ -11,7 +11,7 @@ function callAjax(op) {
             , name : "nya"
         },
         success: function(result) {
-
+            //테스트
             if ( result['result'] == "test" ) {  
                 alert(result['msg']);
             }else if( result['result'] == "face1" ) {
@@ -37,7 +37,7 @@ function callAjax(op) {
                 setFatigue(result['stat'].fatigue);
                 setEnergy(result['stat'].energy);
                 setCondition(result['stat'].condition);
-                setImage(result['stat'].energy);
+                setImage(result['stat'].energy,btn_sleep.innerText == "잠자기" ? false : true);
             }
             
         } //function끝
@@ -48,12 +48,18 @@ function callAjax(op) {
     }); // ------      ajax 끝-----------------
 }
 
-function setImage(param){
-    if(param < 50){
-        img_cat.setAttribute("src","/images/cat/cat_face1.png");
-        span_sub.innerText = "밥줘!!";
-    }else{
-        span_sub.innerText = "";
-        img_cat.setAttribute("src","/images/cat/cat_idle.gif");
+//그림 바꾸기
+function setImage(energy,sleep){
+    if(!sleep){
+        if(energy < 50){
+            img_cat.setAttribute("src","/images/cat/cat_face1.png");
+            span_sub.innerText = "밥줘!!";
+        }else{
+            span_sub.innerText = "";
+            img_cat.setAttribute("src","/images/cat/cat_idle.gif");
+        }
+    }else {
+        span_sub.innerText = "..zzZZZ";
+        img_cat.setAttribute("src","/images/cat/cat_face2.png");
     }
 }

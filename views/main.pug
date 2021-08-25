@@ -1,7 +1,6 @@
 html 
     head 
         title=title 
-        //-meta(name="viewport" content="width=416, user-scalable=yes")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.css")
@@ -39,9 +38,9 @@ html
             P
             button#btn_feed.ui.button(onclick="feed()") 밥 주기
             |
-            button#btn_face1.ui.button(onclick="face1()") 운동
+            button#btn_workout.ui.button(onclick="workout()") 운동
             |
-            button#btn_face2.ui.button(onclick="face2()") 잠자기
+            button#btn_sleep.ui.button(onclick="sleep()") 잠자기
             P 
             #btn_box.hide(onclick="box()") 
                 span.bold 능력치

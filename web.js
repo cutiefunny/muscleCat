@@ -46,19 +46,30 @@ app.listen(port, ()=>{
 console.log("server started");
 
 //크론 배치 실행
-cron.schedule('1,10,20,30,40,50 * * * * *', () => {
-    if(timeCnt>5) timeCnt=1;
+cron.schedule('1 * * * * *', () => {
+    if(timeCnt>9) timeCnt=1;
     else timeCnt++;
-    //포만감이 떨어지는 경우 : 현재 1분에 1 감소
-    if(timeCnt==6) {
-        CRUD.searchData("getAllCondition","condition").then((allStat)=>{
-            console.log("energy decrease 1");
-            allStat.forEach(stat => {
-                if(parseInt(stat.energy)>1) CRUD.updateData("energyDown","condition",parseInt(stat.energy)-1,stat.name)
+    CRUD.searchData("getAllCondition","condition").then((allStat)=>{
+        console.log("change condition");
+        allStat.forEach(stat => {
+            if(!stat.sleep){ //잠든 상태가 아니면
+                //1분에 포만감 1 감소
+                if(parseInt(stat.energy)>1) CRUD.updateData("energy","condition",parseInt(stat.energy)-1,stat.name)
                 .then( console.log(stat.name + ".energy : " + stat.energy)  ) ;
-            });
-        })
-    }
+                //2분에 피로도 1 증가
+                if(timeCnt%2==0 && parseInt(stat.fatigue)<101 ) CRUD.updateData("fatigue","condition",parseInt(stat.fatigue)+1,stat.name)
+                .then( console.log(stat.name + ".fatigue : " + stat.fatigue)  ) ;
+            }else{ //잠든 상태이면
+                //1분에 피로도 2감소
+                if(parseInt(stat.fatigue)<100) CRUD.updateData("fatigue","condition",parseInt(stat.fatigue)-2,stat.name)
+                .then( console.log(stat.name + ".fatigue : " + stat.fatigue)  ) ;
+                //2분에 포만감 1감소
+                if(timeCnt%2 && parseInt(stat.energy)>1) CRUD.updateData("energy","condition",parseInt(stat.energy)-1,stat.name)
+                .then( console.log(stat.name + ".energy : " + stat.energy)  ) ;
+            }
+            
+        });
+    })
     //컨디션이 떨어지는 경우 : 포만감 50% 이하에서 1분에 1 감소
     //피로도가 올라가는 경우 : 깨어 있는 상태에서 10분에 1 상승
     //수면 상태 : 피로도 1분에 1 감소/포만감 10분에 1 감소/컨디션 1분에 1 상승
