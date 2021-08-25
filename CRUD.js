@@ -12,11 +12,10 @@ const db = client.db("muscleCat");
 exports.searchData = async function (op,col,param){
     var collection = db.collection(col);
 
-    if(op=="init"){
-        res = await collection.find().sort({date : -1}).toArray();
-    }else if(op=="getCondition"){
-        res = await collection.find({name:param}).toArray();
-    }
+    if(op=="init") res = await collection.find().sort({date : -1}).toArray();
+    else if(op=="getCondition") res = await collection.find({name:param}).toArray();
+    //else if(op=="getAllCondition") res = await collection.find({name:param}).toArray();
+    
     return res[0];
 }
 

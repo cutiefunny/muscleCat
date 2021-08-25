@@ -51,8 +51,8 @@ cron.schedule('1,10,20,30,40,50 * * * * *', () => {
     else timeCnt++;
     //포만감이 떨어지는 경우 : 현재 1분에 1 감소
     if(timeCnt==6) {
-        CRUD.searchData("getCondition","stat","nya").then((stat)=>{
-            if(parseInt(stat.energy)>1) CRUD.updateData("energyDown","stat",parseInt(stat.energy)-1,"nya");
+        CRUD.searchData("getCondition","condition","nya").then((stat)=>{
+            if(parseInt(stat.energy)>1) CRUD.updateData("energyDown","condition",parseInt(stat.energy)-1,"nya");
             console.log(timeCnt);        
         })
     }
