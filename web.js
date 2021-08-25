@@ -51,9 +51,12 @@ cron.schedule('1,10,20,30,40,50 * * * * *', () => {
     else timeCnt++;
     //포만감이 떨어지는 경우 : 현재 1분에 1 감소
     if(timeCnt==6) {
-        CRUD.searchData("getCondition","condition","nya").then((stat)=>{
-            if(parseInt(stat.energy)>1) CRUD.updateData("energyDown","condition",parseInt(stat.energy)-1,"nya");
-            console.log(timeCnt);        
+        CRUD.searchData("getAllCondition","condition").then((allStat)=>{
+            console.log("energy decrease 1");
+            allStat.forEach(stat => {
+                if(parseInt(stat.energy)>1) CRUD.updateData("energyDown","condition",parseInt(stat.energy)-1,stat.name)
+                .then( console.log(stat.name + ".energy : " + stat.energy)  ) ;
+            });
         })
     }
     //컨디션이 떨어지는 경우 : 포만감 50% 이하에서 1분에 1 감소

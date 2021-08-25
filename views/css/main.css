@@ -16,6 +16,11 @@
   font-weight: bold;
 }
 
+.big{
+  font-weight: bold;
+  font-size: x-large;
+}
+
 .condition{
   color:#00b5ad;
   font-weight: bold;

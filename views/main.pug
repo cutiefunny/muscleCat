@@ -39,14 +39,18 @@ html
             P
             button#btn_feed.ui.button(onclick="feed()") 밥 주기
             |
-            button#btn_face1.ui.button(onclick="face1()") 밥 줘
+            button#btn_face1.ui.button(onclick="face1()") 운동
             |
-            button#btn_face2.ui.button(onclick="face2()") -ㅅ-
+            button#btn_face2.ui.button(onclick="face2()") 잠자기
             P 
             #btn_box.hide(onclick="box()") 
                 span.bold 능력치
                 i.big.caret.square.down.outline.icon
             #div_stat.box(onclick="box()")
+                P.bold Lv.
+                    span.bold= stat.level
+                    |    
+                    span.big= stat.name
                 table
                     tr 
                         td.topAlign

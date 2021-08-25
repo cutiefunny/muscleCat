@@ -14,8 +14,8 @@ exports.controller = function(req,res,next) {
         res.send({result:req.body.op,msg:"face2"});
     }else if(req.body.op=="feed"){
         CRUD.searchData("getCondition","condition",req.body.name).then((stat)=>{
-            CRUD.updateData("feed","condition",parseInt(stat.energy)+feed,req.body.name);
-            res.send({result:req.body.op,energy:parseInt(stat.energy)+feed});
+            CRUD.updateData("feed","condition",parseInt(stat[0].energy)+feed,req.body.name);
+            res.send({result:req.body.op,energy:parseInt(stat[0].energy)+feed});
         });
     }else if(req.body.op=="idle"){
         setTimeout(() => {
@@ -23,7 +23,7 @@ exports.controller = function(req,res,next) {
         }, 2000);
     }else if(req.body.op=="getCondition"){
         CRUD.searchData(req.body.op,"condition",req.body.name).then((stat)=>{
-            res.send({result:"getCondition",stat:stat});
+            res.send({result:"getCondition",stat:stat[0]});
         });
     }
 }
