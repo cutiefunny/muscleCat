@@ -8,6 +8,7 @@ function callAjax(op) {
         data: { 
             msg : "test"
             , op : op
+            , name : "nya"
         },
         success: function(result) {
 

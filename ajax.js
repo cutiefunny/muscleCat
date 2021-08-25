@@ -14,7 +14,7 @@ exports.controller = function(req,res,next) {
         res.send({result:req.body.op,msg:"face2"});
     }else if(req.body.op=="feed"){
         CRUD.searchData("init","stat").then((stat)=>{
-            CRUD.updateData("feed","stat",parseInt(stat.energy)+feed);
+            CRUD.updateData("feed","stat",parseInt(stat.energy)+feed,req.body.name);
             res.send({result:req.body.op,energy:parseInt(stat.energy)+feed});
         });
     }else if(req.body.op=="idle"){
@@ -22,7 +22,7 @@ exports.controller = function(req,res,next) {
             res.send({result:req.body.op,msg:"idle"});
         }, 2000);
     }else if(req.body.op=="getCondition"){
-        CRUD.searchData("init","stat").then((stat)=>{
+        CRUD.searchData(req.body.op,"stat",req.body.name).then((stat)=>{
             res.send({result:"getCondition",stat:stat});
         });
     }
