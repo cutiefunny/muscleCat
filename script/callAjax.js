@@ -62,5 +62,7 @@ function setImage(energy,sleep){
     }else {
         span_sub.innerText = "..zzZZZ";
         img_cat.setAttribute("src","/images/cat/cat_face2.png");
+        btn_feed.className = "ui disabled button";
+        btn_workout.className = "ui disabled button";
     }
 }
