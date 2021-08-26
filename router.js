@@ -1,7 +1,9 @@
 const CRUD= require("./CRUD");
 
 exports.main = function(req,res) {
-    CRUD.searchData("init","stat").then((stat)=>{
+    var name;
+    name = req.query.name ? req.query.name : "김냐냐";
+    CRUD.searchData("init","stat",name).then((stat)=>{
         console.log("read initialize data");
         console.log(stat[0]);
         console.log(stat ? stat.name +" read stat OK" : "read stat fail");

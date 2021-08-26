@@ -13,6 +13,9 @@ var div_fatigue = document.getElementById("div_fatigue");
 var div_energy = document.getElementById("div_energy");
 var div_condition = document.getElementById("div_condition");
 var td_fatigue = document.getElementById("td_fatigue");
+var span_name = document.getElementById("span_name");
+var span_race = document.getElementById("span_race");
+var imgFolder = span_race.innerText;
 //#endregion
 
 //페이지 시작 시 수행되는 함수
@@ -26,6 +29,7 @@ window.onload = function(){
 //#region 클릭 이벤트 함수들
 
 function test(){ callAjax("test"); }
+function selectCat(value){ location.href="/?name="+value; }
 //운동
 function workout(){ callAjax("face1"); }
 //잠자기 버튼 클릭
@@ -34,11 +38,11 @@ function sleep(){
     btn_workout.classList.toggle('disabled');
     if(btn_sleep.innerText=="잠자기") {
         span_sub.innerText = "..zzZZZ";
-        img_cat.setAttribute("src","/images/cat/cat_face2.png");
+        img_cat.setAttribute("src","/images/"+imgFolder+"/cat_sleep.png");
         btn_sleep.innerText="일어나기"
     }else{
         span_sub.innerText = "";
-        img_cat.setAttribute("src","/images/cat/cat_idle.gif");
+        img_cat.setAttribute("src","/images/"+imgFolder+"/cat_idle.gif");
         btn_sleep.innerText="잠자기"
     }
     callAjax("sleep"); 
@@ -47,7 +51,7 @@ function sleep(){
 function feed(){ 
     if( parseInt(div_energy.innerText) > 99 ) {
         span_sub.innerText = "배 불러! 고만 줘!!";
-        img_cat.setAttribute("src","/images/cat/cat_face1.png");
+        img_cat.setAttribute("src","/images/"+imgFolder+"/cat_angry.png");
         callAjax("idle");
     }else callAjax("feed"); 
 

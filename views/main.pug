@@ -48,8 +48,10 @@ html
             #div_stat.box(onclick="box()")
                 P.bold Lv.
                     span.bold= stat.level
+                    |   
+                    span#span_race.bold= stat.race
                     |    
-                    span.big= stat.name
+                    span#span_name.big= stat.name
                 table
                     tr 
                         td.topAlign
@@ -88,6 +90,11 @@ html
                                     td.center 데드리프트
                                     td.right= stat.dead
                                     td.left kg 
+            P
+            select#sbx_cat.ui.dropdown(name="cat" onchange="selectCat(this.value)") 
+                option(value="") 고양이 선택
+                option(value="김냐냐") 치즈태비
+                option(value="냐돌이") 턱시도
 
     script(src="//code.jquery.com/jquery-1.11.0.min.js")
     script(src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.js")

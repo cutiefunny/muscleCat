@@ -8,7 +8,7 @@ function callAjax(op) {
         data: { 
             msg : "test"
             , op : op
-            , name : "nya"
+            , name : span_name.innerText
         },
         success: function(result) {
             //테스트
@@ -17,16 +17,16 @@ function callAjax(op) {
             }else if( result['result'] == "face1" ) {
                 span_sub.className = "bold";
                 span_sub.innerText = "밥줘!!";
-                img_cat.setAttribute("src","/images/cat/cat_face1.png");
+                img_cat.setAttribute("src","/images/"+imgFolder+"/cat_angry.png");
                 callAjax("idle");
             }else if( result['result'] == "face2" ) {
-                img_cat.setAttribute("src","/images/cat/cat_face2.png");
+                img_cat.setAttribute("src","/images/"+imgFolder+"/cat_sleep.png");
                 callAjax("idle");
             }else if( result['result'] == "feed" ) {
                 setEnergy(result['energy']);
                 span_sub.className = "";
                 span_sub.innerText = "맛있다냥!!";
-                img_cat.setAttribute("src","/images/cat/cat_eat.gif");
+                img_cat.setAttribute("src","/images/"+imgFolder+"/cat_eat.gif");
                 callAjax("idle");
             }else if( result['result'] == "sleep" ) {
                 result['sleep'] ? btn_sleep.innerText = "일어나기" : btn_sleep.innerText = "잠자기";
@@ -57,15 +57,15 @@ function callAjax(op) {
 function setImage(energy,sleep){
     if(!sleep){
         if(energy < 50){
-            img_cat.setAttribute("src","/images/cat/cat_face1.png");
+            img_cat.setAttribute("src","/images/"+imgFolder+"/cat_angry.png");
             span_sub.innerText = "밥줘!!";
         }else{
             span_sub.innerText = "";
-            img_cat.setAttribute("src","/images/cat/cat_idle.gif");
+            img_cat.setAttribute("src","/images/"+imgFolder+"/cat_idle.gif");
         }
     }else {
         span_sub.innerText = "..zzZZZ";
-        img_cat.setAttribute("src","/images/cat/cat_face2.png");
+        img_cat.setAttribute("src","/images/"+imgFolder+"/cat_sleep.png");
         btn_feed.className = "ui disabled button";
         btn_workout.className = "ui disabled button";
     }
