@@ -6,8 +6,18 @@ html
         link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.8/dist/semantic.min.css")
         link(rel='stylesheet', href='/views/css/main.css')
     body
+        i#menu.list.icon.big(onclick="clickMenu()")
+        #div_sideBar.ui.left.demo.vertical.inverted.sidebar.labeled.icon.menu
+            a.item
+                i.home.icon
+                Home
+            a.item
+                i.block.layout.icon
+                Topics
+            a.item
+                i.smile.icon
+                Friends
         center
-            P
             H1= title
             #btn_table.hide(onclick="table()") 
                 span.bold 상태

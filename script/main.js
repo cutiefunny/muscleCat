@@ -16,6 +16,8 @@ var td_fatigue = document.getElementById("td_fatigue");
 var span_name = document.getElementById("span_name");
 var span_race = document.getElementById("span_race");
 var imgFolder = span_race.innerText;
+var menu = document.getElementById("menu");
+var div_sideBar = document.getElementById("div_sideBar");
 //#endregion
 
 //페이지 시작 시 수행되는 함수
@@ -27,8 +29,16 @@ window.onload = function(){
 };
 
 //#region 클릭 이벤트 함수들
+// $('.ui.labeled.icon.sidebar')
+//   .sidebar('toggle')
+// ;
 
 function test(){ callAjax("test"); }
+//메뉴 클릭
+function clickMenu(){ 
+    $('.ui.labeled.icon.sidebar').sidebar('toggle'); 
+}
+//고양이 선택
 function selectCat(value){ location.href="/?name="+value; }
 //운동
 function workout(){ callAjax("face1"); }
