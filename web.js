@@ -1,6 +1,6 @@
 //#region 초반 선언부
 const express = require('express');
-const port = 8002;
+const port = 8004;
 const fs = require('fs');
 const http = require('https'); 
 const download = require('image-downloader');
@@ -34,7 +34,7 @@ var timeCnt = 0;
 
 //리스닝
 app.listen(port, ()=>{
-    console.log('8002번 포트에 대기중!');
+    console.log('8004번 포트에 대기중!');
 })
 console.log("server started");
 
